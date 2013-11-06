@@ -1,9 +1,0 @@
-#!/bin/bash
-
-sudo rmmod simp_read.ko
-sudo rm /dev/simp_read
-make
-sudo /sbin/insmod simp_read.ko
-mknod /dev/simp_read c 245 0
-sudo chgrp wheel /dev/simp_read
-sudo chmod 664 /dev/simp_read

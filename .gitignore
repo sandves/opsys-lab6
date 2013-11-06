@@ -7,6 +7,9 @@
 *.symvers
 
 simp_lko/.tmp_versions
+*.o.d
+*~
+*.mod.c
 
 # Libraries
 *.lib
