@@ -6,7 +6,8 @@
 *.markers
 *.symvers
 
-simp_lko/.tmp_versions
+*.order
+.tmp_versions/
 *.o.d
 *~
 *.mod.c
