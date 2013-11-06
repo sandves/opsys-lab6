@@ -87,7 +87,6 @@ static ssize_t dev_write (struct file *file, const char *buf, size_t count, loff
 {
 
 	int bufLen=0;
-	sprintf(msg, "");
 
 	if( copy_from_user( pString, buf, count ) )
 	{

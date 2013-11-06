@@ -64,8 +64,10 @@ static ssize_t dev_read (struct file *file, char *buf, size_t count, loff_t *ppo
 		printk("simplkm_rw: copy_to_user failed\n" );
 		return -EFAULT;
 	}
-	else 
+	else {
+		sprintf(msg, "");
 		return bufLen;
+	}
 }
 
 static ssize_t dev_write (struct file *file, const char *buf, size_t count, loff_t *ppos)
