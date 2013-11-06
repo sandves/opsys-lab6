@@ -2,6 +2,11 @@
 *.o
 *.ko
 *.obj
+*.cmd
+*.markers
+*.symvers
+
+simp_lko/.tmp_versions
 
 # Libraries
 *.lib
