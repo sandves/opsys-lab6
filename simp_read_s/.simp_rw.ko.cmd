@@ -1,0 +1,1 @@
+cmd_/media/sf_mac_share/simp_read_s/simp_rw.ko := ld -r -m elf_i386  --build-id -o /media/sf_mac_share/simp_read_s/simp_rw.ko /media/sf_mac_share/simp_read_s/simp_rw.o /media/sf_mac_share/simp_read_s/simp_rw.mod.o

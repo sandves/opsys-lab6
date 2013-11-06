@@ -1,0 +1,1 @@
+cmd_/media/sf_mac_share/simp_lko/simp_lko.ko := ld -r -m elf_i386  --build-id -o /media/sf_mac_share/simp_lko/simp_lko.ko /media/sf_mac_share/simp_lko/simp_lko.o /media/sf_mac_share/simp_lko/simp_lko.mod.o
