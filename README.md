@@ -6,6 +6,7 @@ Lab 6 - Linux kernel drivers
 [3.4 Questions](#3.4q)<br> 
 [3.9 Questions](#3.9q)<br>
 [4.2 Tasks](#4.2t)<br>
+[4.3 Questions](#4.3q)<br>
 
 
 ### Part 1: Loadable kernel module
@@ -18,10 +19,10 @@ Lab 6 - Linux kernel drivers
 <a name="3.4q"/>
 #### 3.4 Questions
 
-1. Ok
+1. The makefile has a variable which specifies the kernel directory: ```KDIR := /lib/modules/$(shell uname -r)/build```. On the virtual image, this variabla becomes */lib/modules/2.6.27.7-smp/build*. 
 2. Kernel modules do not have access to standard C libraries. We have to use libraries provided by the kernel. printk() is a function defined in the kernel which is almost eqvuivalent to printf().
-3. Ok
-4. A compiler warning.
+3. The *-C* flag in the makefile tells make to change to the specified directory before doing anything else. I navigated to */lib/modules/2.6.27.7-smp/build* and discovered another *Makefile*, which performs the actual build. I scrolled through the file and noticed some code which handles both `modules` and `clean`. I didn't quite understand what the *-M* flag is doing though. I wasn't able to find it in the man pages either.
+4. If we remove *MODULE_LICENSE* from our code, the kernel will complain when we are loading the module: `modpost: missing MODULE_LICENSE()`.
  
 ### Extending the loadable kernel module width ```read()```
 #### 3.7 Questions
@@ -175,13 +176,18 @@ func checkError(err error) {
 ```
 
 d) I believe this question is more relevant for task b. Task a only handles one message, so we don't have to think about protection.
-   The buffer is cleared every time ```write()``` is called, so we will never have a buffer overflow.
+The buffer is cleared every time ```write()``` is called, so we will never have a buffer overflow.
    
 ### Part 2: Virtual memory
 
 <a name="4.2t"/>
 #### 4.2 Tasks
 1. The kernel functions equivalent to ```malloc()``` and ```free()``` are ```kmalloc()``` and ```kfree()```.
+
+<a name="4.3q"/> 
+#### 4.3 Questions
+
+a)
 
 | Where memory is allocated | Tried to dereference | Textual value of pointer | Result                  |
 | ------------------------- |----------------------| -------------------------| ----------------------- |
@@ -190,5 +196,11 @@ d) I believe this question is more relevant for task b. Task a only handles one 
 | Userspace process 1       | Userspace process 2  |                          |                         |
 | Userspace thread 1        | Userspace thread 2   |                          |                         |
 | Kernel driver 1           | Kernel driver 2      |                          |                         |
+
+b)
+
+Why do we have to use `copy_to_user()` and `copy_from_user()` in a kernel driver? Protection is a keyword here. We should not be able to acecss kernel addresses directly from user space.
+The functions check this by calling `access_ok()` on the adress. The functions handles errors as well. This mean that if we encounter a page fault during copy,
+we can return `-EFAULT` to the user and prevent the kernel from crashing.
 
 [lkm_install]: https://github.com/sandves/opsys-lab6/blob/master/screenshots/lkm_install.png?raw=true "lkm install"
