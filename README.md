@@ -5,6 +5,7 @@ Lab 6 - Linux kernel drivers
 [3.4 Tasks](#3.4t)<br>
 [3.4 Questions](#3.4q)<br> 
 [3.9 Questions](#3.9q)<br>
+[4.2 Tasks](#4.2t)<br>
 
 
 ### Part 1: Loadable kernel module
@@ -177,6 +178,10 @@ d) I believe this question is more relevant for task b. Task a only handles one 
    The buffer is cleared every time ```write()``` is called, so we will never have a buffer overflow.
    
 ### Part 2: Virtual memory
+
+<a name="4.2t"/>
+#### 4.2 Tasks
+1. The kernel functions equivalent to ```malloc()``` and ```free()``` are ```kmalloc()``` and ```kfree()```.
 
 | Where memory is allocated | Tried to dereference | Textual value of pointer | Result                  |
 | ------------------------- |----------------------| -------------------------| ----------------------- |
