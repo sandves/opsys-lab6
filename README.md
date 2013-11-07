@@ -182,7 +182,11 @@ The buffer is cleared every time ```write()``` is called, so we will never have 
 
 <a name="4.2t"/>
 #### 4.2 Tasks
-1. The kernel functions equivalent to ```malloc()``` and ```free()``` are ```kmalloc()``` and ```kfree()```.
+1. The kernel functions equivalent to ```malloc()``` and ```free()``` are ```kmalloc()``` and ```kfree()```. User space applications do not have access to physical memory addresses. We are trying to use an address from physical memory to access something in virtual memory, that is why we get a segmentation fault. I guess there is a small chance that we could actually get an address which points to something in both kernel and user space.
+2. The kernel can access all memory, so in this case we have no problem reading what the poiner is pointing to.
+3. Processes can not share memory. Each process runs in its own dedicated address space in virtual memory.
+4. TODO
+5. TODO
 
 <a name="4.3q"/> 
 #### 4.3 Questions
