@@ -1,12 +1,20 @@
 Lab 6 - Linux kernel drivers
 ==========
 
+##### Table of Contents  
+[3.4 Tasks](#3.4t)<br>
+[3.4 Questions](#3.4q)<br> 
+[3.9 Questions](#3.9q)<br>
+
+
 ### Part 1: Loadable kernel module
 
+<a name="3.4t"/>
 #### 3.3 Tasks
 
 ![alt text][lkm_install]
 
+<a name="3.4q"/>
 #### 3.4 Questions
 
 1. Ok
@@ -86,6 +94,7 @@ static ssize_t dev_read (struct file *file, char *buf, size_t count, loff_t *ppo
 
 ### Extend the driver with ```write()```
 
+<a name="3.9q"/>
 #### 3.9 Questions
 
 a)
