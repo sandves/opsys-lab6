@@ -85,9 +85,6 @@ static ssize_t dev_read (struct file *file, char *buf, size_t count, loff_t *ppo
 
 static ssize_t dev_write (struct file *file, const char *buf, size_t count, loff_t *ppos)
 {
-
-	int bufLen=0;
-
 	if( copy_from_user( pString, buf, count ) )
 	{
 		printk("simplkm_rw: copy_from_user failed\n");
@@ -98,8 +95,7 @@ static ssize_t dev_write (struct file *file, const char *buf, size_t count, loff
 		anotherBuff = (char*)simple_strtol( pString , &end, 16 );
 		printk( "anotherBuff=%p, and the contents of this memory is: \"%s\"\n", anotherBuff, anotherBuff );
 		sprintf(pString + strlen(pString), "\n");
-		bufLen = strlen( pString );
-		return bufLen;
+		return count;
 	}
 }
 
