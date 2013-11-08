@@ -6,6 +6,7 @@
 *.markers
 *.symvers
 
+*.swp
 *.order
 .tmp_versions/
 *.o.d
