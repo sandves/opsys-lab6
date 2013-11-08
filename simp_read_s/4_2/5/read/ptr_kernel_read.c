@@ -65,9 +65,7 @@ static ssize_t dev_read (struct file *file, char *buf, size_t count, loff_t *ppo
 
   	sprintf( pString, "%p", aBuff );
 
-  	sprintf(pString + strlen(pString), "\n"); 
-
-  	printk( "[ptr_kernel_read] This is the memory address I allocated = %s\n", pString );
+  	printk(KERN_INFO "[ptr_kernel_read] = %s\n", pString );
 
   	bufLen = strlen( pString );
 			
@@ -138,6 +136,6 @@ static void __exit dev_cleanup_module (void)
 
 module_init(dev_init_module);
 module_exit(dev_cleanup_module);
-MODULE_AUTHOR("Morten Mossige, University of Stavanger");
+MODULE_AUTHOR("Stian Sandve, University of Stavanger");
 MODULE_DESCRIPTION("Sample Linux devicedriver");
 MODULE_LICENSE("GPL");

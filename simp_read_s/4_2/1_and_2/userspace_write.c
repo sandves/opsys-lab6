@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 	ofp = fopen(filename, mode);
 
 	if (ofp == NULL) {
-		fprintf(stderr, "Can't open output file!\n");
+		fprintf(stderr, "Unable to open %s. Verify that the file exists.\n", filename);
 		return 1;
 	}
 

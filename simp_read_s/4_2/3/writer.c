@@ -21,7 +21,7 @@ int main()
     /* create the FIFO (named pipe) */
     mkfifo(fifo, 0666);
 
-    /* write "Hi" to the FIFO */
+    /* write string to the FIFO */
     fd = open(fifo, O_WRONLY);
     write(fd, pString, sizeof(pString));
     close(fd);

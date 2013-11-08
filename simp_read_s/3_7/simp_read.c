@@ -129,6 +129,6 @@ static void __exit dev_cleanup_module (void)
 
 module_init(dev_init_module);
 module_exit(dev_cleanup_module);
-MODULE_AUTHOR("Morten Mossige, University of Stavanger");
+MODULE_AUTHOR("Stian Sandve, University of Stavanger");
 MODULE_DESCRIPTION("Sample Linux devicedriver");
 MODULE_LICENSE("GPL");

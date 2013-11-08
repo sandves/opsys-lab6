@@ -1,6 +1,6 @@
 /*****************************************************************************
 
-DESCRIPTION Skeleton of the read-driver
+DESCRIPTION Skeleton of the malloc-driver
 
 *****************************************************************************/
 
@@ -34,7 +34,7 @@ static char *end;
 
 /*--------------------  F u n c t i o n s  ---------------------------------*/
 
-// open function - called when the "file" /dev/simp_read is opened in userspace
+// open function - called when the "file" /dev/simp_malloc is opened in userspace
 static int dev_open (struct inode *inode, struct file *file) 
 {
 	aBuff = kmalloc( 64 , GFP_KERNEL);
@@ -44,7 +44,7 @@ static int dev_open (struct inode *inode, struct file *file)
 }
 
 
-// close function - called when the "file" /dev/simp_read is closed in userspace  
+// close function - called when the "file" /dev/simp_malloc is closed in userspace  
 static int dev_release (struct inode *inode, struct file *file)
 {
 	kfree( aBuff );
@@ -52,7 +52,7 @@ static int dev_release (struct inode *inode, struct file *file)
 	return 0;
 }
 
-// read function called when from /dev/simp_read is read
+// read function called when from /dev/simp_malloc is read
 static ssize_t dev_read (struct file *file, char *buf, size_t count, loff_t *ppos) 
 {
 	if(msgWritten) {
@@ -156,6 +156,6 @@ static void __exit dev_cleanup_module (void)
 
 module_init(dev_init_module);
 module_exit(dev_cleanup_module);
-MODULE_AUTHOR("Morten Mossige, University of Stavanger");
+MODULE_AUTHOR("Stian Sandve, University of Stavanger");
 MODULE_DESCRIPTION("Sample Linux devicedriver");
 MODULE_LICENSE("GPL");

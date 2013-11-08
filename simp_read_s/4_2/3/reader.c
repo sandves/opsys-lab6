@@ -11,7 +11,7 @@ int main()
     char *anotherBuff;
     char *end;
 
-    /* open, read, and display the message from the FIFO */
+    /* open, read, and display the string from the FIFO */
     fd = open(fifo, O_RDONLY);
     read(fd, pString, 16);
     anotherBuff = (char*)strtol( pString, &end, 16 ); 
