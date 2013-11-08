@@ -186,20 +186,20 @@ The buffer is cleared every time ```write()``` is called, so we will never have 
 2. The kernel can access all memory, so in this case we have no problem reading what the poiner is pointing to.
 3. Processes can not share memory. Each process runs in its own dedicated address space in virtual memory.
 4. TODO
-5. TODO
+5. ![alt text][lkm_share]
 
 <a name="4.3q"/> 
 #### 4.3 Questions
 
 a)
 
-| Where memory is allocated | Tried to dereference | Textual value of pointer | Result                  |
-| ------------------------- |----------------------| -------------------------| ----------------------- |
-| Kernel                    | Userspace            | cd448180                 | Segmentation fault      |
-| Userspace                 | Kernel               | 0x804a170                | Some text in the buffer |
-| Userspace process 1       | Userspace process 2  |                          |                         |
-| Userspace thread 1        | Userspace thread 2   |                          |                         |
-| Kernel driver 1           | Kernel driver 2      |                          |                         |
+| Where memory is allocated | Tried to dereference | Textual value of pointer | Result                      |
+| ------------------------- |----------------------| -------------------------| --------------------------- |
+| Kernel                    | Userspace            | cd448180                 | Segmentation fault          |
+| Userspace                 | Kernel               | 0x804a170                | Some text in the buffer     |
+| Userspace process 1       | Userspace process 2  | 0x804a008                | Segmentation fault          |
+| Userspace thread 1        | Userspace thread 2   | 0x804a008                | Successfully reads the data |
+| Kernel driver 1           | Kernel driver 2      | cd19e500                 | Successfully reads the data |
 
 b)
 
@@ -208,3 +208,4 @@ The functions check this by calling `access_ok()` on the adress. The functions h
 we can return `-EFAULT` to the user and prevent the kernel from crashing.
 
 [lkm_install]: https://github.com/sandves/opsys-lab6/blob/master/screenshots/lkm_install.png?raw=true "lkm install"
+[lkm_share]: https://github.com/sandves/opsys-lab6/blob/master/screenshots/lkm_share.png?raw=true "lkm share"
