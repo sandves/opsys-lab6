@@ -187,6 +187,7 @@ The buffer is cleared every time ```write()``` is called, so we will never have 
 3. Processes can not share memory. Each process runs in its own dedicated address space in virtual memory.
 4. Two threads within the same process runs in the same address space. We can access global variables from multiple threads in the same process.
 5. As I mentioned earlier, the kernel have access to all memory. That is why we don't get a segmentation fault in this case.
+
 ![alt text][lkm_share]
 
 <a name="4.3q"/> 
