@@ -206,7 +206,7 @@ a)
 b)
 
 Why do we have to use `copy_to_user()` and `copy_from_user()` in a kernel driver? Protection is a keyword here. We should not be able to acecss kernel addresses directly from user space.
-The functions check this by calling `access_ok()` on the adress. The functions handles errors as well. This mean that if we encounter a page fault during copy,
+The functions check this by calling `access_ok()` on the adress. The functions handles errors as well. This means that if we encounter a page fault during copy,
 we can return `-EFAULT` to the user and prevent the kernel from crashing.
 
 [lkm_install]: https://github.com/sandves/opsys-lab6/blob/master/screenshots/lkm_install.png?raw=true "lkm install"
