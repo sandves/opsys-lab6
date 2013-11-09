@@ -198,7 +198,7 @@ a)
 | Where memory is allocated | Tried to dereference | Textual value of pointer | Result                      |
 | ------------------------- |----------------------| -------------------------| --------------------------- |
 | Kernel                    | Userspace            | cd448180                 | Segmentation fault          |
-| Userspace                 | Kernel               | 0x804a170                | Some text in the buffer     |
+| Userspace                 | Kernel               | 0x804a170                | Successfully reads the data |
 | Userspace process 1       | Userspace process 2  | 0x804a008                | Segmentation fault          |
 | Userspace thread 1        | Userspace thread 2   | 0x804a008                | Successfully reads the data |
 | Kernel driver 1           | Kernel driver 2      | cd19e500                 | Successfully reads the data |
